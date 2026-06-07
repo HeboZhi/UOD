@@ -1,4 +1,147 @@
 # UOD
 投稿 《The Visual Computer》 中
 
-中稿后会提供预训练模型
+
+
+## Create Environment
+
+```bash
+conda create -n CAFR python=3.8
+conda activate CAFR
+pip install -r requirements.txt
+```
+
+
+## Install Detectron2
+
+Please install detectron2 following [here](https://detectron2.readthedocs.io/en/latest/tutorials/install.html).
+
+## Dataset Preparation
+
+The datasets can be downloaded using this [link](https://drive.google.com/drive/folders/1Mh4xseUq8jJP129uqCvG9cSLdjqdl0Jo?usp=drive_link).
+
+### PASCAL VOC
+
+Please place the annotation files into the dataset root directory.
+
+Download the JPEGImages data from the official VOC source.
+
+The VOC dataset folder should have the following structure:
+
+```text
+VOC_DATASET_ROOT
+│
+├── JPEGImages
+├── voc0712_train_all.json
+├── voc0712_train_completely_annotation200.json
+└── val_coco_format.json
+```
+
+### COCO
+
+Please place the annotation files into the `annotations` folder.
+
+The COCO dataset folder should have the following structure:
+
+```text
+COCO_DATASET_ROOT
+│
+├── annotations
+│   ├── instances_train2017.json
+│   ├── instances_val2017.json
+│   ├── instances_val2017_coco_ood.json
+│   ├── instances_val2017_mixed_ID.json
+│   └── instances_val2017_mixed_OOD.json
+│
+├── train2017
+└── val2017
+```
+
+## Training
+
+### VOC
+
+```bash
+python train_net.py \
+    --dataset-dir VOC_DATASET_ROOT \
+    --num-gpus 2 \
+    --config-file configs/VOC/CAFR.yaml \
+    --random-seed 0 \
+    --resume
+```
+
+### COCO
+
+```bash
+python train_net.py \
+    --dataset-dir COCO_DATASET_ROOT \
+    --num-gpus 2 \
+    --config-file configs/COCO/CAFR.yaml \
+    --random-seed 0 \
+    --resume
+```
+
+## Pretesting
+
+This stage is used to estimate the threshold using a subset of the training data.
+
+```bash
+sh pretest.sh
+```
+
+## Evaluation
+
+### VOC
+
+```bash
+python apply_net.py \
+    --dataset-dir VOC_DATASET_ROOT \
+    --test-dataset voc_custom_val \
+    --config-file configs/VOC/CAFR.yaml \
+    --inference-config Inference/standard_nms.yaml \
+    --random-seed 0 \
+    --image-corruption-level 0 \
+    --visualize 0
+```
+
+### COCO-OOD
+
+```bash
+sh test_ood.sh
+```
+
+### COCO-Mix
+
+```bash
+sh test_mixed.sh
+```
+
+## Visualization
+
+```bash
+sh vis.sh
+```
+
+## Citation
+
+If you find this repository useful, please consider citing our work.
+
+```bibtex
+@article{CAFR,
+  title={CAFR},
+  author={XXX},
+  journal={XXX},
+  year={2026}
+}
+```
+
+## Acknowledgements
+
+This project is built upon the excellent open-source projects:
+
+* AUD
+* UnSniffer
+* Detectron2
+
+We sincerely thank the authors for making their code publicly available.
+
