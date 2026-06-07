@@ -22,9 +22,10 @@ The datasets can be downloaded using this [link](https://drive.google.com/drive/
 
 ### PASCAL VOC
 
-Please place the annotation files into the dataset root directory.
+Please put the corresponding json files in Google Cloud Disk into ./anntoations
 
-Download the JPEGImages data from the official VOC source.
+Please download the JPEGImages data from the [Link](
+https://drive.google.com/file/d/1n9C4CiBURMSCZy2LStBQTzR17rD_a67e/view?usp=sharing) provided by [VOS](https://github.com/deeplearning-wisc/vos#).
 
 The VOC dataset folder should have the following structure:
 
