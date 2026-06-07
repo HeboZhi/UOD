@@ -59,7 +59,7 @@ The COCO dataset folder should have the following structure:
 ```bash
 python train_net.py --dataset-dir VOC_DATASET_ROOT --num-gpus 2 --config-file VOC-Detection/faster-rcnn/Iou_FFN.yaml --random-seed 0 --resume
 ```
-The pretrained models for Pascal-VOC can be downloaded from [Here](). Please put the model in ./detection/.
+The pretrained models for Pascal-VOC can be downloaded from [Here](https://drive.google.com/file/d/1-rSYdKAsvhJDNT7SRuq9K55rFPzo_lfy/view?usp=drive_link). Please put the model in ./detection/.
 
 # Pretesting
 The function of this process is to obtain the threshold, which only uses part of the training data.
