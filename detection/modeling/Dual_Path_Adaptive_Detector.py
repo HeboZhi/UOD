@@ -10,7 +10,7 @@ import torch.nn as nn
 import torch.nn.functional as F
 
 class DPAD(nn.Module):
-    #best  5  原型   k=2
+    #best  5 properties   k=2
     def __init__(self, dim: int, num_prototypes: int = 5, detach_features: bool = True):
         super().__init__()
         self.dim = dim
@@ -31,8 +31,7 @@ class DPAD(nn.Module):
         nn.init.constant_(self.feature_gate[-1].weight, 0)
         nn.init.constant_(self.feature_gate[-1].bias, 0)
 
-        # 尺度缩放与偏置参数
-        # logit_scale 决定了分类边界的锐利度；bias 设为 2.0 提供了基础的物体性先验。
+        
         self.logit_scale = nn.Parameter(torch.log(torch.tensor(1.0 / 0.07)))
         self.bias = nn.Parameter(torch.tensor([2.0]))
 
@@ -53,7 +52,6 @@ class DPAD(nn.Module):
         else:
             max_val = sims.max(dim=1).values
 
-        # [步骤 4]：得分映射
         scale = self.logit_scale.exp()
         logits = scale * max_val + self.bias
 
