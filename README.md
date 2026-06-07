@@ -1,7 +1,5 @@
-# UOD
-投稿 《The Visual Computer》 中
-
-
+## Class-Agnostic Foreground Response Calibration for Robust Unknown Object Detection
+[Hebo Zhi],[Junhao Li],[Shiyan Fan],[Jun Zhang]
 
 ## Create Environment
 
@@ -68,24 +66,6 @@ The function of this process is to obtain the threshold, which only uses part of
 sh pretest.sh
 ```
 
-### COCO
-
-```bash
-python train_net.py \
-    --dataset-dir COCO_DATASET_ROOT \
-    --num-gpus 2 \
-    --config-file configs/COCO/CAFR.yaml \
-    --random-seed 0 \
-    --resume
-```
-
-## Pretesting
-
-This stage is used to estimate the threshold using a subset of the training data.
-
-```bash
-sh pretest.sh
-```
 
 ## Evaluation on the VOC
 ```bash
