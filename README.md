@@ -1,6 +1,6 @@
 ## Class-Agnostic Foreground Response Calibration for Robust Unknown Object Detection
 [Hebo Zhi],[Junhao Li],[Shiyan Fan],[Jun Zhang]
-
+This work is currently under review at The Visual Computer.
 ## Create Environment
 
 ```bash
@@ -84,6 +84,5 @@ sh test_mixed.sh
 sh vis.sh
 ```
 
-## Acknowledgements
 
 
