@@ -61,15 +61,11 @@ The COCO dataset folder should have the following structure:
 python train_net.py --dataset-dir VOC_DATASET_ROOT --num-gpus 2 --config-file VOC-Detection/faster-rcnn/Iou_FFN.yaml --random-seed 0 --resume
 ```
 The pretrained models for Pascal-VOC can be downloaded from [Here](). Please put the model in ./detection/.
-### VOC
 
+## Pretesting
+The function of this process is to obtain the threshold, which only uses part of the training data.
 ```bash
-python train_net.py \
-    --dataset-dir VOC_DATASET_ROOT \
-    --num-gpus 2 \
-    --config-file configs/VOC/CAFR.yaml \
-    --random-seed 0 \
-    --resume
+sh pretest.sh
 ```
 
 ### COCO
@@ -91,59 +87,23 @@ This stage is used to estimate the threshold using a subset of the training data
 sh pretest.sh
 ```
 
-## Evaluation
-
-### VOC
-
+## Evaluation on the VOC
 ```bash
-python apply_net.py \
-    --dataset-dir VOC_DATASET_ROOT \
-    --test-dataset voc_custom_val \
-    --config-file configs/VOC/CAFR.yaml \
-    --inference-config Inference/standard_nms.yaml \
-    --random-seed 0 \
-    --image-corruption-level 0 \
-    --visualize 0
+python apply_net.py --dataset-dir VOC_DATASET_ROOT --test-dataset voc_custom_val  --config-file VOC-Detection/faster-rcnn/Iou_FFN.yaml --inference-config Inference/standard_nms.yaml --random-seed 0 --image-corruption-level 0 --visualize 0
 ```
-
-### COCO-OOD
-
+## Evaluation on the COCO-OOD
 ```bash
 sh test_ood.sh
 ```
-
-### COCO-Mix
-
+## Evaluation on the COCO-Mix
 ```bash
 sh test_mixed.sh
 ```
-
-## Visualization
-
+## Visualize prediction results
 ```bash
 sh vis.sh
 ```
 
-## Citation
-
-If you find this repository useful, please consider citing our work.
-
-```bibtex
-@article{CAFR,
-  title={CAFR},
-  author={XXX},
-  journal={XXX},
-  year={2026}
-}
-```
-
 ## Acknowledgements
 
-This project is built upon the excellent open-source projects:
-
-* AUD
-* UnSniffer
-* Detectron2
-
-We sincerely thank the authors for making their code publicly available.
 
