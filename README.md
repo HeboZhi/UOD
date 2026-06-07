@@ -20,7 +20,7 @@ Please install detectron2 following [here](https://detectron2.readthedocs.io/en/
 
 The datasets can be downloaded using this [link](https://drive.google.com/drive/folders/1Mh4xseUq8jJP129uqCvG9cSLdjqdl0Jo?usp=drive_link).
 
-### PASCAL VOC
+#### PASCAL VOC
 
 Please put the corresponding json files in Google Cloud Disk into ./anntoations
 
@@ -30,32 +30,30 @@ https://drive.google.com/file/d/1n9C4CiBURMSCZy2LStBQTzR17rD_a67e/view?usp=shari
 The VOC dataset folder should have the following structure:
 
 ```text
-VOC_DATASET_ROOT
-│
-├── JPEGImages
-├── voc0712_train_all.json
-├── voc0712_train_completely_annotation200.json
-└── val_coco_format.json
+ └── VOC_DATASET_ROOT
+     |
+     ├── JPEGImages
+     ├── voc0712_train_all.json
+     ├── voc0712_train_completely_annotation200.json
+     └── val_coco_format.json
 ```
 
-### COCO
+####+ COCO
 
-Please place the annotation files into the `annotations` folder.
+Please put the corresponding json files in Google Cloud Disk into ./anntoations
 
 The COCO dataset folder should have the following structure:
 
 ```text
-COCO_DATASET_ROOT
-│
-├── annotations
-│   ├── instances_train2017.json
-│   ├── instances_val2017.json
-│   ├── instances_val2017_coco_ood.json
-│   ├── instances_val2017_mixed_ID.json
-│   └── instances_val2017_mixed_OOD.json
-│
-├── train2017
-└── val2017
+ └── COCO_DATASET_ROOT
+     |
+     ├── annotations
+        ├── xxx (the original json files)
+        ├── instances_val2017_coco_ood.json
+        ├── instances_val2017_mixed_ID.json
+        └── instances_val2017_mixed_OOD.json
+     ├── train2017
+     └── val2017
 ```
 
 ## Training
