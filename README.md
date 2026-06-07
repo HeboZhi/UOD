@@ -1,8 +1,8 @@
-## Class-Agnostic Foreground Response Calibration for Robust Unknown Object Detection
+# Class-Agnostic Foreground Response Calibration for Robust Unknown Object Detection
 [Hebo Zhi],[Junhao Li],[Shiyan Fan],[Jun Zhang]
 
 This work is currently under review at The Visual Computer.
-## Create Environment
+# Create Environment
 
 ```bash
 conda create -n CAFR python=3.8
@@ -11,11 +11,11 @@ pip install -r requirements.txt
 ```
 
 
-## Install Detectron2
+# Install Detectron2
 
 Please install detectron2 following [here](https://detectron2.readthedocs.io/en/latest/tutorials/install.html).
 
-## Dataset Preparation
+# Dataset Preparation
 
 The datasets can be downloaded using this [link](https://drive.google.com/drive/folders/1Mh4xseUq8jJP129uqCvG9cSLdjqdl0Jo?usp=drive_link).
 
@@ -55,32 +55,32 @@ The COCO dataset folder should have the following structure:
      └── val2017
 ```
 
-## Training
+# Training
 ```bash
 python train_net.py --dataset-dir VOC_DATASET_ROOT --num-gpus 2 --config-file VOC-Detection/faster-rcnn/Iou_FFN.yaml --random-seed 0 --resume
 ```
 The pretrained models for Pascal-VOC can be downloaded from [Here](). Please put the model in ./detection/.
 
-## Pretesting
+# Pretesting
 The function of this process is to obtain the threshold, which only uses part of the training data.
 ```bash
 sh pretest.sh
 ```
 
 
-## Evaluation on the VOC
+# Evaluation on the VOC
 ```bash
 python apply_net.py --dataset-dir VOC_DATASET_ROOT --test-dataset voc_custom_val  --config-file VOC-Detection/faster-rcnn/Iou_FFN.yaml --inference-config Inference/standard_nms.yaml --random-seed 0 --image-corruption-level 0 --visualize 0
 ```
-## Evaluation on the COCO-OOD
+# Evaluation on the COCO-OOD
 ```bash
 sh test_ood.sh
 ```
-## Evaluation on the COCO-Mix
+# Evaluation on the COCO-Mix
 ```bash
 sh test_mixed.sh
 ```
-## Visualize prediction results
+# Visualize prediction results
 ```bash
 sh vis.sh
 ```
